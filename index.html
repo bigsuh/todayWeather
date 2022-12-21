@@ -10,12 +10,16 @@
 <body>
 
     <h1> 오늘의 날씨입니다. </h1>
-    <button onclick = "getWeather()"> 날씨 가져오기 </button>"
+    <button onclick = "getWeather()"> 날씨 가져오기 </button>
     <p id = "temperature"> </p>
     <script>
         function getWeather()
         {
-            
+            fetch('http://goweather.herokuapp.com/weather/Gangneung')
+            .then((response) => response.json())
+            .then((data) => {
+                document.getElementById("temperature").innerHTML = data['temperature'];
+            });
         }
     </script>
     
